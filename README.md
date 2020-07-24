@@ -1,1 +1,2 @@
-# terraform-general
+# Terraform General
+The general Terraform repository.
