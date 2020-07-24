@@ -46,6 +46,10 @@ variable "virtual_machine_size" {
   type = string
 }
 
+variable "virtual_machine_computer_name" {
+  type = string
+}
+
 variable "virtual_machine_admin_username" {
   type = string
 }

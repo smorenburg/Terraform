@@ -33,6 +33,7 @@ resource "azurerm_linux_virtual_machine" "vm-01" {
   resource_group_name = azurerm_network_interface.nic-01.resource_group_name
   location            = azurerm_network_interface.nic-01.location
   size                = var.virtual_machine_size
+  computer_name       = var.virtual_machine_computer_name
   admin_username      = var.virtual_machine_admin_username
   network_interface_ids = [
     azurerm_network_interface.nic-01.id

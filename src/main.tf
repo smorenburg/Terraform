@@ -1,7 +1,7 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = <resource group>
-    storage_account_name = <storage account>
+    resource_group_name  = "core-rg-01"
+    storage_account_name = "terraformsa87520"
     container_name       = "tfstate"
     key                  = "terraform.state"
   }
@@ -46,7 +46,7 @@ module "virtual_network" {
 
 module "virtual_machine" {
   source = "./modules/virtual-machine"
-
+  
   resource_group_name                                                              = module.resource_group.name
   location                                                                         = module.resource_group.location
   virtual_machine_public_ip_name                                                   = var.virtual_machine_public_ip_name
@@ -59,6 +59,7 @@ module "virtual_machine" {
   virtual_machine_network_interface_ip_configuration_private_ip_address_allocation = var.virtual_machine_network_interface_ip_configuration_private_ip_address_allocation
   virtual_machine_name                                                             = var.virtual_machine_name
   virtual_machine_size                                                             = var.virtual_machine_size
+  virtual_machine_computer_name                                                    = var.virtual_machine_computer_name
   virtual_machine_admin_username                                                   = var.virtual_machine_admin_username
   virtual_machine_admin_ssh_key_public_key                                         = var.virtual_machine_admin_ssh_key_public_key
   virtual_machine_os_disk_name                                                     = var.virtual_machine_os_disk_name
