@@ -1,0 +1,12 @@
+trigger:
+    branches:
+        include:
+            - master
+
+stages:
+    - stage: Build
+      displayName: "Build"
+      jobs:
+          - job: Build
+            pool:
+                vmImage: "Ubuntu-18.04"
