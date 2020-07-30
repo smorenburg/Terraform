@@ -1,26 +1,26 @@
 trigger:
-    branches:
-        include:
-            - master
+  branches:
+    include:
+      - master
 
 stages:
-    - stage: Build
-      displayName: "Build"
-      jobs:
-          - job: Build
-            pool:
-                vmImage: "Ubuntu-18.04"
-            steps:
-                - publish: $(Build.StagingDirectory)
-                  artifact: build
+  - stage: Build
+    displayName: "Build"
+    jobs:
+      - job: Build
+        pool:
+          vmImage: "Ubuntu-18.04"
+        steps:
+          - publish: $(Build.StagingDirectory)
+            artifact: build
 
-    - stage: Staging
-      jobs:
-          - job: Release
-            pool:
-                vmImage: "Ubuntu-18.04"
-            steps:
-                - checkout: none
+  - stage: Staging
+    jobs:
+      - job: Release
+        pool:
+          vmImage: "Ubuntu-18.04"
+        steps:
+          - checkout: none
 
-                - download: current
-                  artifact: build
+          - download: current
+            artifact: build
