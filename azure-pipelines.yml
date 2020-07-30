@@ -10,3 +10,17 @@ stages:
           - job: Build
             pool:
                 vmImage: "Ubuntu-18.04"
+            steps:
+                - publish: $(Build.StagingDirectory)
+                  artifact: build
+
+    - stage: Staging
+      jobs:
+          - job: Release
+            pool:
+                vmImage: "Ubuntu-18.04"
+            steps:
+                - checkout: none
+
+                - download: current
+                  artifact: build
